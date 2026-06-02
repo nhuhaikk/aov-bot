@@ -6,4 +6,4 @@ lz4
 brotli
 etcpak
 pyfmodex
-
+sm4
