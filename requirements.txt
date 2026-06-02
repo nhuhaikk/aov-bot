@@ -3,5 +3,5 @@ Pillow
 sm4
 tabulate
 pycryptodome
-git+https://github.com/K0lb3/UnityPy.git
+git+https://github.com/nhuhaikk/aov-bot.git
 
