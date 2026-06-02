@@ -1,4 +1,4 @@
 python-telegram-bot==21.1.1
-Pillow==10.3.0
+Pillow
 git+https://github.com/K0lb3/UnityPy.git
 
