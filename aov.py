@@ -13,7 +13,13 @@ from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQu
 # Cấu hình log để dễ theo dõi lỗi
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = "8815828923:AAFN-qJ2gC9Kru3JWaPngmUQbgJG5927L1w"
+# Sử dụng thư viện os có sẵn để đọc token từ môi trường (Environment Variable)
+TOKEN = os.getenv("TELEGRAM_TOKEN")
+
+# Đoạn kiểm tra an toàn (nếu quên cấu hình trên Railway bot sẽ báo lỗi rõ ràng)
+if not TOKEN:
+    raise ValueError("LỖI: Chưa cấu hình biến TELEGRAM_TOKEN trên Railway!")
+
 WORKDIR = "FolderBotAov"
 
 os.makedirs(WORKDIR, exist_ok=True)
