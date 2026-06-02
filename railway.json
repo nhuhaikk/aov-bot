@@ -1,0 +1,12 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "providers": ["python"],
+    "buildCommand": "python -m venv /app/.venv && /app/.venv/bin/pip install --upgrade pip && /app/.venv/bin/pip install -r requirements.txt"
+  },
+  "deploy": {
+    "startCommand": "mkdir -p /app/.venv/lib/python3.11/site-packages/UnityPy && curl -L -o /app/.venv/lib/python3.11/site-packages/UnityPy/UnityPy.tpk https://github.com/K0lb3/UnityPy/raw/master/UnityPy/UnityPy.tpk && /app/.venv/bin/python aov.py",
+    "restartPolicyType": "ON_FAILURE"
+  }
+}
