@@ -7,3 +7,4 @@ brotli
 etcpak
 pyfmodex
 sm4
+tabulate
