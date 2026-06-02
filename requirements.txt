@@ -1,7 +1,9 @@
-python-telegram-bot==21.1.1
+python-telegram-bot>=21.0
 Pillow
-sm4
-tabulate
+UnityPy
 pycryptodome
-git+https://github.com/nhuhaikk/aov-bot.git
+lz4
+brotli
+etcpak
+pyfmodex
 
