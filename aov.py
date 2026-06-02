@@ -4,6 +4,25 @@ import logging
 import asyncio
 import zipfile
 import time
+
+import urllib.request
+
+# TỰ ĐỘNG TẢI FILE TPK VÀO ĐÚNG HỆ THỐNG PYTHON 3.13 TRƯỚC KHI IMPORT THƯ VIỆN
+tpk_dir = "/usr/local/lib/python3.13/site-packages/UnityPy"
+tpk_path = os.path.join(tpk_dir, "UnityPy.tpk")
+if not os.path.exists(tpk_path):
+    try:
+        os.makedirs(tpk_dir, exist_ok=True)
+        print("Đang tải file cấu trúc UnityPy.tpk từ GitHub...")
+        urllib.request.urlretrieve(
+            "https://github.com/K0lb3/UnityPy/raw/master/UnityPy/UnityPy.tpk", 
+            tpk_path
+        )
+        print("Tải file UnityPy.tpk thành công!")
+    except Exception as e:
+        print(f"Lỗi tải file TPK hệ thống: {e}")
+
+# Sau khi tải xong file nền mới import thư viện game
 import UnityPy_AOV
 from PIL import Image
 from UnityPy_AOV.enums import TextureFormat
