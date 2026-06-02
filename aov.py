@@ -307,7 +307,8 @@ async def process_import_tg(user_dir, zip_path, status_msg, context):
     output_bundle_path = os.path.join(user_dir, output_bundle_name)
     
     with open(output_bundle_path, "wb") as f:
-        f.write(env.file.save("lzma"))
+        f.write(env.file.save())
+        #f.write(env.file.save("lz4"))
         
     return output_bundle_path
 
