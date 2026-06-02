@@ -2,7 +2,7 @@
 version = "3.10"
 
 [phases.setup]
-nixPkgs = ["...", "python310", "cmake", "clang", "zlib", "libjpeg", "libtiff"]
+nixPkgs = ["python310", "cmake", "clang", "zlib", "libjpeg", "libtiff"]
 
 [phases.build]
 dependsOn = ["setup"]
