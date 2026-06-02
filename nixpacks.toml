@@ -1,0 +1,12 @@
+[providers.python]
+version = "3.10"
+
+[phases.setup]
+nixPkgs = ["...", "python310", "cmake", "clang", "zlib", "libjpeg", "libtiff"]
+
+[phases.build]
+dependsOn = ["setup"]
+cmds = ["python -m venv /app/.venv && /app/.venv/bin/pip install --upgrade pip && /app/.venv/bin/pip install -r requirements.txt"]
+
+[phases.start]
+cmds = ["/app/.venv/bin/python aov.py"]
