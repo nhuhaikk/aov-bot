@@ -96,40 +96,67 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     #await query.answer()
     user_id = query.from_user.id
     
-    # Bấm nút quay lại: Chuyển đổi trực tiếp tin nhắn hiện tại về Menu chính, không xóa không gửi mới
+    # =========================
+
+    # BẮT ĐẦU BOT
+
+    # =========================
+
     if query.data == "start_bot":
 
         await query.answer(
-    "Bot đã khởi động thành công 🚀",
-    show_alert=True
-)
 
-USER_STATES.pop(user_id, None)
+            "Bot đã khởi động thành công 🚀",
 
-keyboard = [
-    [
-        InlineKeyboardButton(
-            "MOD AOV",
-            callback_data="menu_mod_skin"
-        ),
-        InlineKeyboardButton(
-            "MOD ASSETBUNDLE",
-            callback_data="menu_mod_assetbundle"
+            show_alert=True
+
         )
-    ]
-]
 
-reply_markup = InlineKeyboardMarkup(keyboard)
+        USER_STATES.pop(user_id, None)
 
-await query.edit_message_text(
-    f"✅ BOT ĐÃ SẴN SÀNG!\n\n"
-    f"Xin chào {query.from_user.first_name}\n\n"
-    "<b>CHỌN CHỨC NĂNG</b>",
-    parse_mode="HTML",
-    reply_markup=reply_markup
-)
+        keyboard = [
 
-return
+            [
+
+                InlineKeyboardButton(
+
+                    "MOD AOV",
+
+                    callback_data="menu_mod_skin"
+
+                ),
+
+                InlineKeyboardButton(
+
+                    "MOD ASSETBUNDLE",
+
+                    callback_data="menu_mod_assetbundle"
+
+                )
+
+            ]
+
+        ]
+
+        reply_markup = InlineKeyboardMarkup(keyboard)
+
+        await query.edit_message_text(
+
+            f"✅ BOT ĐÃ SẴN SÀNG!\n\n"
+
+            f"Xin chào {query.from_user.first_name}\n\n"
+
+            "<b>CHỌN CHỨC NĂNG</b>",
+
+            parse_mode="HTML",
+
+            reply_markup=reply_markup
+
+        )
+
+        return
+
+    await query.answer()
 
     # =========================
 
