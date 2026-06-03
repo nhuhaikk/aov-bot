@@ -103,57 +103,43 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # =========================
 
     if query.data == "start_bot":
-
         await query.answer(
-
-            "Bot đã khởi động thành công 🚀",
-
+            "Bot Aov Tool được phát triển bởi @inhuhai.\nNếu có vấn đề gì trao đổi hay góp ý, liên hệ tôi qua tele trên hoặc sdt: 0388878876.\nXin cảm ơn!",
             show_alert=True
-
         )
-
         USER_STATES.pop(user_id, None)
-
         keyboard = [
-
             [
-
                 InlineKeyboardButton(
-
                     "MOD AOV",
-
                     callback_data="menu_mod_skin"
-
                 ),
-
                 InlineKeyboardButton(
-
                     "MOD ASSETBUNDLE",
-
                     callback_data="menu_mod_assetbundle"
-
                 )
-
             ]
-
         ]
 
         reply_markup = InlineKeyboardMarkup(keyboard)
 
         await query.edit_message_text(
-
-            f"✅ BOT ĐÃ SẴN SÀNG!\n\n"
-
-            f"Xin chào {query.from_user.first_name}\n\n"
-
-            "<b>CHỌN CHỨC NĂNG</b>",
-
+            f"<b>AOV BOT TOOL ONLINE</b>\n\n"
+            f"Ngày: {now.strftime('%d/%m/%Y')}\n"
+            f"Giờ: {now.strftime('%H:%M:%S')}\n\n"
+            f"Xin chào: <code>{query.from_user.first_name}</code> chúc bạn ngày mới tốt lành.\n"
+            f"Trạng thái: Hoạt động\n\n"
+            "<b>TÍNH NĂNG</b>\n"
+            "━━━━━━━━━━━━━━\n"
+            "MOD ASSETBUNDLE\n"
+            "Extract Texture2D\n"
+            "Import Texture mới\n\n"
+            "MOD AOV\n"
+            "Mod Skin (đang phát triển)\n\n"
+            "Chọn chức năng bên dưới để bắt đầu.",
             parse_mode="HTML",
-
             reply_markup=reply_markup
-
         )
-
         return
 
     await query.answer()
@@ -170,12 +156,24 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("MOD AOV", callback_data="menu_mod_skin"),
             InlineKeyboardButton("MOD ASSETBUNDLE", callback_data="menu_mod_assetbundle")]
         ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
+                reply_markup = InlineKeyboardMarkup(keyboard)
+
+        now = datetime.now()
+
         await query.edit_message_text(
-            f"Xin chào {update.effective_user.first_name}!\n"
-            "Tôi là bot Aov được phát triển bởi @inhuhai!\n\n"
-            "<b>CHỌN CHỨC NĂNG</b>",
+            f"<b>AOV BOT TOOL ONLINE</b>\n\n"
+            f"Ngày: {now.strftime('%d/%m/%Y')}\n"
+            f"Giờ: {now.strftime('%H:%M:%S')}\n\n"
+            f"Xin chào: <code>{query.from_user.first_name}</code> chúc bạn ngày mới tốt lành.\n"
+            f"Trạng thái: Hoạt động\n\n"
+            "<b>TÍNH NĂNG</b>\n"
+            "━━━━━━━━━━━━━━\n"
+            "MOD ASSETBUNDLE\n"
+            "Extract Texture2D\n"
+            "Import Texture mới\n\n"
+            "MOD AOV\n"
+            "Mod Skin (đang phát triển)\n\n"
+            "Chọn chức năng bên dưới để bắt đầu.",
             parse_mode="HTML",
             reply_markup=reply_markup
         )
