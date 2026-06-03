@@ -76,7 +76,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = [
         [InlineKeyboardButton(
-            "🚀 BẮT ĐẦU BOT",
+            "BẮT ĐẦU BOT",
             callback_data="start_bot"
         )]
     ]
@@ -84,8 +84,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
-        f"👋 Xin chào {update.effective_user.first_name}!\n\n"
-        "🤖 Đây là Bot AOV Tool\n"
+        f"Xin chào {update.effective_user.first_name}!Chúc bạn ngày mới tốt lành.\n\n"
+        "Đây là Bot AOV Tool\n"
         "Nhấn nút bên dưới để khởi động.",
         reply_markup=reply_markup
     )
