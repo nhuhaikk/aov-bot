@@ -85,7 +85,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
-        f"Xin chào {update.effective_user.first_name}!Chúc bạn ngày mới tốt lành.\n\n"
+        f"Xin chào {update.effective_user.first_name}!\n\n"
         "Đây là Bot AOV Tool\n"
         "Nhấn nút bên dưới để khởi động.",
         reply_markup=reply_markup
@@ -127,9 +127,8 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         await query.edit_message_text(
             f"<b>AOV BOT TOOL ONLINE</b>\n\n"
-            f"Ngày: {now.strftime('%d/%m/%Y')}\n"
-            f"Giờ: {now.strftime('%H:%M:%S')}\n\n"
             f"Xin chào: <code>{query.from_user.first_name}</code> chúc bạn ngày mới tốt lành.\n"
+            f"Ngày: {now.strftime('%d/%m/%Y')}\n"
             f"Trạng thái: Hoạt động\n\n"
             "<b>TÍNH NĂNG</b>\n"
             "━━━━━━━━━━━━━━\n"
@@ -164,9 +163,8 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         await query.edit_message_text(
             f"<b>AOV BOT TOOL ONLINE</b>\n\n"
-            f"Ngày: {now.strftime('%d/%m/%Y')}\n"
-            f"Giờ: {now.strftime('%H:%M:%S')}\n\n"
             f"Xin chào: <code>{query.from_user.first_name}</code> chúc bạn ngày mới tốt lành.\n"
+            f"Ngày: {now.strftime('%d/%m/%Y')}\n"
             f"Trạng thái: Hoạt động\n\n"
             "<b>TÍNH NĂNG</b>\n"
             "━━━━━━━━━━━━━━\n"
