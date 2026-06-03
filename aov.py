@@ -70,20 +70,23 @@ async def progress_tg(context, status_msg, file, done, total, start_time, last=[
             pass
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Lệnh /start hiển thị Menu chức năng"""
+    """Lệnh /start hiển thị nút bắt đầu"""
     user_id = update.effective_user.id
-    USER_STATES.pop(user_id, None) # Reset trạng thái khi bấm start
-    
+    USER_STATES.pop(user_id, None)
+
     keyboard = [
-        [InlineKeyboardButton("MOD AOV", callback_data="menu_mod_skin"),
-        InlineKeyboardButton("MOD ASSETBUNDLE", callback_data="menu_mod_assetbundle")]
+        [InlineKeyboardButton(
+            "🚀 BẮT ĐẦU BOT",
+            callback_data="start_bot"
+        )]
     ]
+
     reply_markup = InlineKeyboardMarkup(keyboard)
+
     await update.message.reply_text(
-        f"Xin chào {update.effective_user.first_name}!\n"
-        "Tôi là bot Aov được phát triển bởi @inhuhai!\n\n"
-        "<b>CHỌN CHỨC NĂNG</b>",
-        parse_mode="HTML",
+        f"👋 Xin chào {update.effective_user.first_name}!\n\n"
+        "🤖 Đây là Bot AOV Tool\n"
+        "Nhấn nút bên dưới để khởi động.",
         reply_markup=reply_markup
     )
 
@@ -94,6 +97,66 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = query.from_user.id
     
     # Bấm nút quay lại: Chuyển đổi trực tiếp tin nhắn hiện tại về Menu chính, không xóa không gửi mới
+    if query.data == "start_bot":
+
+        await query.answer(
+
+            "Bot đã khởi động thành công 🚀",
+
+            show_alert=True
+
+        )
+
+        USER_STATES.pop(user_id, None)
+
+        keyboard = [
+
+            [
+
+                InlineKeyboardButton(
+
+                    "MOD AOV",
+
+                    callback_data="menu_mod_skin"
+
+                ),
+
+                InlineKeyboardButton(
+
+                    "MOD ASSETBUNDLE",
+
+                    callback_data="menu_mod_assetbundle"
+
+                )
+
+            ]
+
+        ]
+
+        reply_markup = InlineKeyboardMarkup(keyboard)
+
+        await query.edit_message_text(
+
+            f"✅ BOT ĐÃ SẴN SÀNG!\n\n"
+
+            f"Xin chào {query.from_user.first_name}\n\n"
+
+            "<b>CHỌN CHỨC NĂNG</b>",
+
+            parse_mode="HTML",
+
+            reply_markup=reply_markup
+
+        )
+
+        return
+
+    # =========================
+
+    # QUAY LẠI MENU
+
+    # =========================
+
     if query.data == "menu_back":
         USER_STATES.pop(user_id, None) # Xóa trạng thái cũ để tránh lỗi gửi nhầm file
         keyboard = [
