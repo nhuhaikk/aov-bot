@@ -96,6 +96,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     #await query.answer()
     user_id = query.from_user.id
+    now = datetime.now()
     
     # =========================
 
