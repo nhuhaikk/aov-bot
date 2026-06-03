@@ -156,7 +156,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("MOD AOV", callback_data="menu_mod_skin"),
             InlineKeyboardButton("MOD ASSETBUNDLE", callback_data="menu_mod_assetbundle")]
         ]
-                reply_markup = InlineKeyboardMarkup(keyboard)
+        reply_markup = InlineKeyboardMarkup(keyboard)
 
         now = datetime.now()
 
