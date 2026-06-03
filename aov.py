@@ -93,62 +93,37 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Xử lý khi người dùng chọn nút trên Menu"""
     query = update.callback_query
-    await query.answer()
+    #await query.answer()
     user_id = query.from_user.id
     
     # Bấm nút quay lại: Chuyển đổi trực tiếp tin nhắn hiện tại về Menu chính, không xóa không gửi mới
     if query.data == "start_bot":
 
         await query.answer(
-
             "Bot đã khởi động thành công 🚀",
-
             show_alert=True
-
         )
-
         USER_STATES.pop(user_id, None)
-
         keyboard = [
-
             [
-
-                InlineKeyboardButton(
-
+            InlineKeyboardButton
                     "MOD AOV",
-
                     callback_data="menu_mod_skin"
-
                 ),
-
                 InlineKeyboardButton(
-
                     "MOD ASSETBUNDLE",
-
                     callback_data="menu_mod_assetbundle"
-
                 )
-
             ]
-
         ]
-
         reply_markup = InlineKeyboardMarkup(keyboard)
-
         await query.edit_message_text(
-
             f"✅ BOT ĐÃ SẴN SÀNG!\n\n"
-
             f"Xin chào {query.from_user.first_name}\n\n"
-
             "<b>CHỌN CHỨC NĂNG</b>",
-
             parse_mode="HTML",
-
             reply_markup=reply_markup
-
         )
-
         return
 
     # =========================
