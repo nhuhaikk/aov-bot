@@ -100,31 +100,36 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if query.data == "start_bot":
 
         await query.answer(
-            "Bot đã khởi động thành công 🚀",
-            show_alert=True
+    "Bot đã khởi động thành công 🚀",
+    show_alert=True
+)
+
+USER_STATES.pop(user_id, None)
+
+keyboard = [
+    [
+        InlineKeyboardButton(
+            "MOD AOV",
+            callback_data="menu_mod_skin"
+        ),
+        InlineKeyboardButton(
+            "MOD ASSETBUNDLE",
+            callback_data="menu_mod_assetbundle"
         )
-        USER_STATES.pop(user_id, None)
-        keyboard = [
-            [
-            InlineKeyboardButton
-                    "MOD AOV",
-                    callback_data="menu_mod_skin"
-                ),
-                InlineKeyboardButton(
-                    "MOD ASSETBUNDLE",
-                    callback_data="menu_mod_assetbundle"
-                )
-            ]
-        ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.edit_message_text(
-            f"✅ BOT ĐÃ SẴN SÀNG!\n\n"
-            f"Xin chào {query.from_user.first_name}\n\n"
-            "<b>CHỌN CHỨC NĂNG</b>",
-            parse_mode="HTML",
-            reply_markup=reply_markup
-        )
-        return
+    ]
+]
+
+reply_markup = InlineKeyboardMarkup(keyboard)
+
+await query.edit_message_text(
+    f"✅ BOT ĐÃ SẴN SÀNG!\n\n"
+    f"Xin chào {query.from_user.first_name}\n\n"
+    "<b>CHỌN CHỨC NĂNG</b>",
+    parse_mode="HTML",
+    reply_markup=reply_markup
+)
+
+return
 
     # =========================
 
